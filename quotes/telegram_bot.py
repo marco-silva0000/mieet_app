@@ -46,7 +46,7 @@ def author_command(update, context):
         print('len is something')
         if context.args[0] == 'add':
             if len(context.args) > 2:
-                author = Author.objects.create(key=context.args[1], name=" ".join(context.args[2:]))
+                author = Author.objects.create(key=context.args[1], name=" ".join(context.args[2:]), is_validated=False)
                 update.message.reply_text(f"added author with key:{author.key} name:{author.name}")
             else:
                 update.message.reply_text(f"too few arguments, please use ['add', 'value_for_key', 'valus for ful name']")
@@ -75,7 +75,7 @@ def quote_command(update, context):
                 try:
                     author = Author.objects.get(key=context.args[1])
                     print(f'author={author}')
-                    q = Quote.objects.create(author=author, text=" ".join(context.args[2:]))
+                    q = Quote.objects.create(author=author, text=" ".join(context.args[2:]), is_validated=False)
                     print(f'quote={q}')
                     update.message.reply_text(f"added quote for author {author}")
                 except Author.DoesNotExist:

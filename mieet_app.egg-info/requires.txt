@@ -1,2 +1,4 @@
 django<3.0,>=2.2
 djangorestframework<4.0,>=3.10
+python-dotenv<0.11.0,>=0.10.3
+python-telegram-bot<13.0.0,>=12.0.0
